@@ -2,11 +2,12 @@ package org.launchcode.techjobs.oo;
 
 import java.util.Objects;
 
+import static java.lang.System.lineSeparator;
+
 public class Job {
 
     private int id;
     private static int nextId = 1;
-
     private String name;
     private Employer employer;
     private Location location;
@@ -18,7 +19,8 @@ public class Job {
     //  the 'id' field.
 
     public Job() {
-        id = getId();
+        id = nextId;
+        nextId++;
     }
 
     public Job(String name, Employer employer, Location location, PositionType positionType, CoreCompetency coreCompetency) {
@@ -29,7 +31,7 @@ public class Job {
         this.positionType = positionType;
         this.coreCompetency = coreCompetency;
     }
-    // TODO: Add custom equals and hashCode methods. Consider two Job objects "equal" when their id fields
+// TODO: Add custom equals and hashCode methods. Consider two Job objects "equal" when their id fields
     //  match.
 
     @Override
@@ -47,6 +49,11 @@ public class Job {
 
     // TODO: Add getters for each field EXCEPT nextId. Add setters for each field EXCEPT nextID
     //  and id.
+
+    public int getId() {
+        return id;
+    }
+
     public String getName() {
         return name;
     }
@@ -68,7 +75,7 @@ public class Job {
     }
 
     public void setName(String name) {
-        this.name = name;
+            this.name = name;
     }
 
     public void setEmployer(Employer employer) {
@@ -87,7 +94,14 @@ public class Job {
         this.coreCompetency = coreCompetency;
     }
 
-    public int getId() {
-        return id;
+    @Override
+    public String toString() {
+        return "\n" + "ID: " + id + "\n" +
+                "Name: " + name + "\n" +
+                "Employer: " + employer.getValue() + "\n"+
+                "Location: " + location.getValue() + "\n" +
+                "Position Type: " + positionType.getValue() + "\n" +
+                "Core Competency: " + coreCompetency.getValue() + "\n";
     }
+
 }

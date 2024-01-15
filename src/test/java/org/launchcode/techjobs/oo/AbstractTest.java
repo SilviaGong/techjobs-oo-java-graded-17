@@ -54,7 +54,7 @@ public class AbstractTest {
             Method getValueMethod = clazz.getMethod("getValue");
             value = (String) getValueMethod.invoke(fieldValue);
         }
-        if (substituteEmpty && value == "") {
+        if (substituteEmpty && value.isEmpty()) {
             value = "Data not available";
         }
         return value;
